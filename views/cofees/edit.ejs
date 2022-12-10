@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body>
+		<%- include("../partials/header.ejs") %>
+		<main>
+			<div>
+				<form action="/coffees" method="post">
+					<fieldset>
+                        <legend>Edit a <%= coffee.name %></legend>
+                        <label>
+                            NAME: <input 
+                                type="text"
+                                name="name"
+                                value="<%= coffee.name %>"
+                                placeholder="enter new coffe"
+                            />
+                        </label>
+                        <label>
+                            BEAN: <select id="volume">
+    
+                                <%
+                                var options = [ "1", "5", "10", "50", "75", "100" ];
+                                for ( var i = 0; i < options.length; i++ )
+                                {
+                                    var selected = ( config[0].volume == i ) ? "selected" : "";
+                                    %><option value="<%=options[ i ] %>" <%=selected %>><%=i %></option><%
+                                }
+                                %>
+                                </select>
+                        </label>
+                        <label>
+                            EXPRESSO SHOT: <input type="checkbox" name="Add Expresso shot" <%= coffee.addExpresso ? "checked" : "" %> />
+                        </label>
+                        <label>
+                            FLAVOR: <input 
+                                type="text"
+                                name="flavor"
+                                value="<%= coffee.flavor %>"
+                                placeholder="Flavorflav"
+                            />
+                        </label>
+                        <label>
+                            SUGAR: <input 
+                                type="text"
+                                name="sugar"
+                                value="<%= coffee.sugar %>"
+                                placeholder="Add sugar"
+                            />
+                        </label>
+                        <label>
+                            ICED: <input type="checkbox" name="make it iced" <%= coffee.iced ? "checked" : "" %> />
+                        </label>
+                        <label>
+                            SIZE: <input 
+                                type="text"
+                                name="size"
+                                value="<%= coffee.size %>"
+                                placeholder="Change size"
+                            />
+                        </label>
+                    </fieldset>
+					<input type="submit" value="Create a New Sneaker" />
+				</form>
+                <a href="/sneakers/"><button>Back to Main</button></a>
+			</div>
+		</main>
+	</body>
+</html>
