@@ -11,11 +11,11 @@ const Coffee = require("./coffee")
 mongoose.connection.on('open', () => {
 
   // define data we want to put in the database
-  const coffeeSeed =  [
-      {name: "Peppermin Attack" , bean: "Robusta", expressoShot: true, flavor: "Peppermint", sugar: "Sugar", iced: false, size: "Medium",},
-      {name: "Mighty Mocha" , bean: "Arabica", expressoShot: true, flavor: "none", sugar: "Splenda", iced: false, size: "Large",},
-      {name: "Stan Lee" , bean: "Excelsa", expressoShot: true, flavor: "Greatness", sugar: "Raw cane Sugar", iced: true, size: "Medium",},
-      {name: "Pumpkin Spice" , bean: "Liberica", expressoShot: false, flavor: "Pumpkin Spice", sugar: "Liquid Cane", iced: false, size: "Large",},
+  const coffees =  [
+      {name: "Peppermin Attack" , bean: "Robusta", expressoShot: true, flavor: "Peppermint", sugar: "Sugar", iced: false, size: "Medium"},
+      {name: "Mighty Mocha" , bean: "Arabica", expressoShot: true, flavor: "none", sugar: "Splenda", iced: false, size: "Large"},
+      {name: "Stan Lee" , bean: "Excelsa", expressoShot: true, flavor: "Greatness", sugar: "Raw cane Sugar", iced: true, size: "Medium"},
+      {name: "Pumpkin Spice" , bean: "Liberica", expressoShot: false, flavor: "Pumpkin Spice", sugar: "Liquid Cane", iced: false, size: "Large"},
     
     ]
     
@@ -24,7 +24,7 @@ mongoose.connection.on('open', () => {
 
           console.log("database filled"),
           console.log(data);
-          console.log("databasef illed")
+          console.log("database filled"),
 			mongoose.connection.close()
 		})
 	})

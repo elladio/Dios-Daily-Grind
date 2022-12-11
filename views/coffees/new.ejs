@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body>
+		<%- include("../partials/header.ejs") %>
+		<main>
+			<div class="update-container">
+				<form class="new" action="/sneakers" method="post">
+					<fieldset>
+                        <legend>Create a new Coffee</legend>
+    
+                        <label>
+                            NAME: <input type="text" name="name" placeholder="enter cooky coffee catchphrase" />
+                        </label>
+                        <label>
+                            BEAN: <input type="text" name="bean type" placeholder="Choose a bean" />
+                        </label>      
+                        <label>
+                            ADD EXPRESSO SHOT: <input type="checkbox" name="expressoShot" />
+                        </label>   
+                        <label>
+                            FLAVOR: <input type="text" name="Flavor" placeholder="Choose a flavor" />
+                        </label>  
+                        <label>
+                            SUGAR: <input type="text" name="Sugar" placeholder="Sugar" />
+                        </label>  
+                        <label>
+                            ICED: <input type="checkbox" name="iced" />
+                        </label>  
+                        <label>
+                            SIZE: <input type="text" name="Size" placeholder="Size" />
+                        </label> 
+                    </fieldset>
+					<input class="create" type="submit" value="Create a New Sneaker" />
+					<a href="/sneakers/"><button class="back-btn"">Back to Main</button></a>
+				</form>
+			</div>
+		</main>
+	</body>
+</html>

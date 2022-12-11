@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body class="show-page">
+		<%- include("../partials/header.ejs") %>
+		<main>
+			<div class="showcontainer">
+				<article>
+					<h2><%= coffee.name %></h2>
+					<h4>Bean: <%= coffee.bean %></h4>
+                    <h4>Expresso Shot <%= coffee.expressoShot ? "Yes" : "No" %></h4>
+					<h4>Flavor: <%= coffee.flavor %></h4>
+					<h4>Sugar: <%= coffee.sugar %></h4>
+                    <h4>Iced <%= coffee.iced ? "Yes" : "No" %></h4>
+					<h4>Size: <%= coffee.size %></h4>
+					
+			
+					<a href="/coffees/<%= coffee._id %>/edit"
+						><button class="showedit">Edit</button></a
+					>
+					<form
+						action="/coffees/<%= coffee._id %>?_method=DELETE"
+						method="POST"
+					>
+						<input class="showdelete" type="submit" value="Delete" />
+					</form>
+					<a href="/coffees/"
+						><button class="showback">Return to main</button></a
+					>
+				</article>
+			</div>
+		</main>
+	</body>
+	</html>

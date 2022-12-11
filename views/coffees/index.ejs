@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body class="index-page">
+		<%- include("../partials/header.ejs") %>
+		<main>
+			<div class="container">
+				<a href="/coffees/new"
+					><button class="add">Add A New coffee</button></a
+				>
+				<% for (coffee of coffees) { %>
+				<article class="grid">
+					<a href="/coffees/<%= coffee.id %>">
+						<h2 class="name"><%= coffee.name %></h2>
+					</a>
+					</a>
+					<div>
+						<a href="/coffees/<%= coffees._id %>/edit"
+							><button class="edit">🖋️</button></a
+						>
+						<form
+							action="/coffees/<%= coffee._id %>?_method=DELETE"
+							method="POST"
+						>
+							<input class="delete" type="submit" value="🗑️" />
+						</form>
+					</div>
+				</article>
+				<% } %>
+			</div>
+		</main>
+	</body>
+</html>

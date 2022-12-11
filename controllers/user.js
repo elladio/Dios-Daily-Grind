@@ -47,11 +47,11 @@ router.post("/login", (req, res) => {
             if (result) {
                 req.session.username = username;
                 req.session.loggedIn = true;
-                res.redirect("/coffee");
+                res.redirect("/coffees");
             } else {
 
                 res.render("user/login.ejs", {data: 'wrong pass'});
-                // res.send("wrong password");
+                res.send("wrong password");
             }
         }
     });

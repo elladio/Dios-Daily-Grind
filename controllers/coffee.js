@@ -2,7 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require("express")
-const Coffee = require("../models/coffee")
+const Coffee = require("../models/coffees")
 
 /////////////////////////////////////////
 // Create Route
@@ -13,33 +13,25 @@ const router = express.Router()
 // Routes
 /////////////////////////////////////////
 
-
-
-// // index route
-// router.get("/", (req, res) => {
-// 		res.render("loading.ejs")
-		
-// 	})
-
 // index route
 router.get("/", (req, res) => {
 	const id = req.params.id
-	Coffee.find(id, (err, coffee) => {
-		res.render("cofees/index.ejs", { coffee })
+	Coffee.find(id, (err, coffees) => {
+		res.render("coffees/index.ejs", { coffees })
 		
 	})
 })
 
 //new route
 router.get("/new", (req, res) => {
-	res.render("cofees/new.ejs")
+	res.render("coffees/new.ejs")
 })
 
 // create route
 router.post("/", (req, res) => {
 	req.body.expressoShot = req.body.expressoShot === "on" ? true : false
-    req.body.iced = req.body.iced === "on" ? true : false
-	Coffee.create(req.body, (err, sneaker) => {
+	req.body.iced = req.body.iced === "on" ? true : false
+	Coffee.create(req.body, (err, coffee) => {
 		res.redirect("/coffees")
 	})
 })
@@ -47,8 +39,8 @@ router.post("/", (req, res) => {
 // edit route
 router.get("/:id/edit", (req, res) => {
 	const id = req.params.id
-	Coffee.findById(id, (err, sneaker) => {
-		res.render("cofee/edit.ejs", { coffee })
+	Coffee.findById(id, (err, coffee) => {
+		res.render("coffees/edit.ejs", { coffee })
 			
 	})
 })
@@ -57,24 +49,24 @@ router.get("/:id/edit", (req, res) => {
 router.put("/:id", (req, res) => {
 	const id = req.params.id
 	req.body.expressoShot = req.body.expressoShot === "on" ? true : false
-    req.body.iced = req.body.expressoShot === "on" ? true : false
+	req.body.iced = req.body.iced === "on" ? true : false
 	Coffee.findByIdAndUpdate(id, req.body, { new: true }, (err, coffee) => {
-		res.redirect("/coffee")
+		res.redirect("/coffees/")
 	})
 })
 
 router.delete("/:id", (req, res) => {
 	const id = req.params.id
 	Coffee.findByIdAndRemove(id, (err, coffee) => {
-		res.redirect("/coffee")
+		res.redirect("/coffees")
 	})
 })
 
 // show route
 router.get("/:id", (req, res) => {
 	const id = req.params.id
-	Coffee.findById(id, (err, sneaker) => {
-		res.render("cofees/show.ejs", { coffee })
+	Coffee.findById(id, (err, coffee) => {
+		res.render("coffees/show.ejs", { coffee })
 	})
 })
 
