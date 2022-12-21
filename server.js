@@ -4,7 +4,7 @@ const express = require("express") // import express
 const morgan = require("morgan") //import morgan
 const methodOverride = require("method-override")
 const coffeeRouter = require("./controllers/coffee")
-
+const UserRouter = require('./controllers/user')
 /////////////////////////////////////////////////
 // Create our Express Application Object
 /////////////////////////////////////////////////
@@ -19,8 +19,11 @@ app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodi
 app.use(express.static("public")) // serve files from public statically
 
 app.use("/coffees", coffeeRouter)
+app.use("/user", UserRouter)
 
-
+app.get("/", (req, res) => {
+	res.redirect("/coffees")
+})
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////

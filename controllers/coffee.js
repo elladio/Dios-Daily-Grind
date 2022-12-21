@@ -2,7 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require("express")
-const Coffee = require("../models/coffees")
+const Coffee = require("../models/coffee")
 
 /////////////////////////////////////////
 // Create Route
@@ -20,6 +20,38 @@ router.get("/", (req, res) => {
 		res.render("coffees/index.ejs", { coffees })
 		
 	})
+})
+// Authorization Middleware
+router.use((req, res, next) => {
+	// else {
+	// 	res.redirect("/user/login");
+	// 	} 
+	if (!req.session.loggedIn) {
+		res.redirect("/user/login")
+	}
+	if (req.session.loggedIn) {
+		next();
+	} 
+});
+
+router.get("/", (req, res) => {
+	Coffee.find(
+		{
+			username: req.session.username,
+		},
+		(err, coffees) => {
+			res.render("coffees/index.ejs", { coffees })
+		}
+	)
+})
+
+router.get("/", (req, res) => {
+	console.log(req.session)
+	Coffee.find({})
+		.then((coffees) => {
+			res.render("coffees/index.ejs", { coffees })
+		})
+		.catch((err) => console.log(err))
 })
 
 //new route
